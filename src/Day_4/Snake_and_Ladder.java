@@ -1,12 +1,32 @@
 package Day_4;
-import java.util.Random;
+import java.util.Scanner;
 public class Snake_and_Ladder {
     public static void main(String[] args) {
-        System.out.println("Welcome to Snake and Ladder Program");
+        System.out.println(" Enter Player Name : " );
+        Scanner s = new Scanner(System.in);
+        String playerName = s.next();
         int playerPosition = 0; // UC1 - initial position
-        System.out.println("Starting Position is " + playerPosition );
-        Random random = new Random(); // UC2 - Random 1 to 6 roll die
-        int roll_die = random.nextInt(6+1);
-        System.out.println("Player gets number " + roll_die);
+        System.out.println(" Player Name : " + playerName );
+        int die = (int) (Math.floor(Math.random() * 10) % 6 + 1);
+        System.out.println(" Die roll number : " + die );
+        int option = (int) (Math.floor(Math.random() * 10) % 3 );
+        switch (option)
+        {
+            case 0 :
+                System.out.println("No Play");
+                playerPosition += 0; break;
+
+            case 1 :
+                System.out.println("Ladder");
+                playerPosition += die; break;
+
+            default :
+                System.out.println("Snake");
+                playerPosition -= die;
+                if (playerPosition < 0)
+                playerPosition = 0 ;
+            break;
+        }
+        System.out.println("Player Position : " + playerPosition);
     }
 }
